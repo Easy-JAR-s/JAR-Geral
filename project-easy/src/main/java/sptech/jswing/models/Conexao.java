@@ -5,16 +5,18 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class Conexao {
     private JdbcTemplate connection;
-
+    
     public Conexao() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource​.setDriverClassName("org.h2.Driver");
-        dataSource​.setUrl("jdbc:h2:file:./banco_teste");
-        dataSource​.setUsername("sa");
-        dataSource​.setPassword("");
+        dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        dataSource.setUrl("jdbc:sqlserver://svr-projeto-easy.database.windows.net:1433;"
+                + "database=bd-projeto-easy;encrypt=true;trustServerCertificate=false;"
+                + "hostNameInCertificate=*.database.windows.net;");
+        dataSource.setUsername("");
+        dataSource.setPassword("");
         this.connection = new JdbcTemplate(dataSource);
     }
-
+    
     public JdbcTemplate getConnection() {
         return connection;
     }
