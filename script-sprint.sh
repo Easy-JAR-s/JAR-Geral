@@ -2,24 +2,26 @@
 
 sudo apt-get update && sudo apt-get upgrade #atualiza o ambiente
 
+-Y
+
 java -version
 
 if [ $? = 0 ]; #se retorno for igual a 0
 	then #entao,
 		echo "java instalado" #print no terminal
-		
-		if [ -d "Easy---JAR" ]
+
+		cd Easy---JAR
+		if [ $? = 0 ]
 		then
-			cd Easy---JAR
 			git fetch && git pull
-			cd Easy---JAR/project-easy/target
+			cd project-easy/target
 		else
 			git clone https://github.com/PauloCezaretto/Easy---JAR.git
 			cd Easy---JAR/project-easy/target
 		fi
 
-	java -jar project-easy-1.0-SNAPSHOT-jar-with-dependencies.jar
-	
+		java -jar project-easy-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 	else #se nao,
 		echo "java não instalado" #print no terminal
 		echo "gostaria de instalar o java? [s/n]" #print no terminal
@@ -30,9 +32,10 @@ if [ $? = 0 ]; #se retorno for igual a 0
 
 	then #entao
 	sudo apt install openjdk-17-jre -y #executa instalacao do java
-		if [ -d "Easy---JAR" ]
+
+	cd Easy---JAR
+		if [ $? = 0 ]
 		then
-			cd Easy---JAR
 			git fetch && git pull
 			cd Easy---JAR/project-easy/target
 		else
@@ -40,8 +43,8 @@ if [ $? = 0 ]; #se retorno for igual a 0
 			cd Easy---JAR/project-easy/target
 		fi
 
-	java -jar project-easy-1.0-SNAPSHOT-jar-with-dependencies.jar
-	
+		java -jar project-easy-1.0-SNAPSHOT-jar-with-dependencies.jar
+
 	fi #fecha o 2o if
 
 fi #fecha o 1o if
