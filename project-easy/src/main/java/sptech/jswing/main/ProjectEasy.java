@@ -1,11 +1,21 @@
 package sptech.jswing.main;
 
+import com.github.britooo.looca.api.core.Looca;
+import java.util.List;
 import sptech.jswing.models.Conexao;
 import org.springframework.jdbc.core.JdbcTemplate;
+
 public class ProjectEasy extends javax.swing.JFrame {
-    
+
+    Looca looca;
+    Conexao conexao;
+    JdbcTemplate con;
+
     public ProjectEasy() {
         initComponents();
+        this.looca = new Looca();
+        this.conexao = new Conexao();
+        this.con = conexao.getConnection();
     }
 
     @SuppressWarnings("unchecked")
@@ -123,32 +133,19 @@ public class ProjectEasy extends javax.swing.JFrame {
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         
-        Conexao conexao = new Conexao();
-        
         String user = String.valueOf(input_user.getText());
         String password = String.valueOf(input_password.getText());
-        
+
+        List<User> usuarios = con.query("SELECT * FROM usuario WHERE email = ? AND senha = ?", new UserRowMapper(), user, password);
         String resultado = "";
-        
-        if (user.isEmpty() || password.isEmpty()) {
-            resultado += "Usuario vazio!";
+        System.out.println(usuarios);
+                
+        if (user.isEmpty() || password.isEmpty()){
+            resultado += "Acesso negado!";
             jLabel3.setText(resultado.toString());
-        } else {
+        } else{
             JdbcTemplate con = conexao.getConnection();
         }
-        
-        
-        //TIMER PARA O LOOCA
-//        new Timer().scheduleAtFixedRate(new TimerTask() {
-//                Integer numero = 0;
-//        @Override
-//            public void run() {
-//                Integer numeroMaisDez = numero += 10;
-//                        jLabel1.setText(numeroMaisDez.toString());
-//            }
-//}, 0, 5000);
-        
-        
     }//GEN-LAST:event_button_loginActionPerformed
 
     private void input_userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_userActionPerformed
@@ -168,20 +165,27 @@ public class ProjectEasy extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(ProjectEasy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(ProjectEasy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(ProjectEasy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(ProjectEasy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -192,9 +196,7 @@ public class ProjectEasy extends javax.swing.JFrame {
                 new ProjectEasy().setVisible(true);
             }
         });
-        
-        
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

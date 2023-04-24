@@ -12,8 +12,8 @@ public class Conexao {
         dataSource.setUrl("jdbc:sqlserver://svr-projeto-easy.database.windows.net:1433;"
                 + "database=bd-projeto-easy;encrypt=true;trustServerCertificate=false;"
                 + "hostNameInCertificate=*.database.windows.net;");
-        dataSource.setUsername("");
-        dataSource.setPassword("");
+        dataSource.setUsername("admin-projeto-easy");
+        dataSource.setPassword("#Gfgrupo1");
         this.connection = new JdbcTemplate(dataSource);
     }
     
