@@ -146,6 +146,9 @@ public class ProjectEasy extends javax.swing.JFrame {
         
         if (usuarios.size() <= 0){
             System.out.println("Acesso negado - Dados incorretos");
+            jLabel3.setText("Acesso negado");
+        } else {
+            new LoginOk().setVisible(true);
         }
     }//GEN-LAST:event_button_loginActionPerformed
 
