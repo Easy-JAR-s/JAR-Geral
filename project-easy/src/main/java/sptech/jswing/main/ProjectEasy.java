@@ -138,6 +138,7 @@ public class ProjectEasy extends javax.swing.JFrame {
 
     private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
         
+        jLabel3.setText("");
         String user = String.valueOf(input_user.getText());
         String password = String.valueOf(input_password.getText());
         
