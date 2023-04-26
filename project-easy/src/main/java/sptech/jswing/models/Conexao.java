@@ -9,10 +9,9 @@ public class Conexao {
     public Conexao() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dataSource.setUrl("jdbc:sqlserver://svr-projeto-easy.database.windows.net:1433;"
-                + "database=bd-projeto-easy;encrypt=true;trustServerCertificate=false;"
-                + "hostNameInCertificate=*.database.windows.net;");
-        dataSource.setUsername("admin-projeto-easy");
+        dataSource.setUrl("jdbc:sqlserver://svr-projeto-easy.database.windows.net:1433;database=bd-projeto-easy;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
+//        dataSource.setUrl("jdbc:sqlserver://srv-projeto-bitbox.database.windows.net:1433;databaseName=bd-projeto-bitbox")
+        dataSource.setUsername("admin-projeto-easy@svr-projeto-easy");
         dataSource.setPassword("#Gfgrupo1");
         this.connection = new JdbcTemplate(dataSource);
     }

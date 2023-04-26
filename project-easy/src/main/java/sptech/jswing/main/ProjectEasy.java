@@ -136,14 +136,14 @@ public class ProjectEasy extends javax.swing.JFrame {
         String user = String.valueOf(input_user.getText());
         String password = String.valueOf(input_password.getText());
 
-        List<User> usuarios = con.query("SELECT * FROM usuario WHERE email = ? AND senha = ?", new UserRowMapper(), user, password);
         String resultado = "";
-        System.out.println(usuarios);
                 
         if (user.isEmpty() || password.isEmpty()){
             resultado += "Acesso negado!";
             jLabel3.setText(resultado.toString());
         } else{
+            List<User> usuarios = con.query("SELECT * FROM usuario WHERE email = ? AND senha = ?", new UserRowMapper(), user, password);
+            System.out.println(usuarios);
             JdbcTemplate con = conexao.getConnection();
         }
     }//GEN-LAST:event_button_loginActionPerformed

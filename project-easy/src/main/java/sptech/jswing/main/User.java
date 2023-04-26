@@ -1,14 +1,14 @@
 package sptech.jswing.main;
 
 public class User {
-    private Integer idUsuario;
+    private Integer id;
     private String nome;
     private String email;
     private String senha;
     private String cargo;
 
-    public User(Integer idUsuario, String email, String senha) {
-        this.idUsuario = idUsuario;
+    public User(Integer id, String email, String senha) {
+        this.id = id;
         this.email = email;
         this.senha = senha;
     }
@@ -18,11 +18,11 @@ public class User {
     }
 
     public Integer getIdUsuario() {
-        return idUsuario;
+        return id;
     }
 
-    public void setIdUsuario(Integer idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdUsuario(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -59,6 +59,6 @@ public class User {
 
     @Override
     public String toString() {
-        return String.format("Usuário: \nId: %d \nNome: %s \nE-mail: %s\n Senha: %s\n Cargo: %s", idUsuario, nome, email, senha, cargo);
+        return String.format("Usuário: \nId: %d \nNome: %s \nE-mail: %s\n Senha: %s\n Cargo: %s", id, nome, email, senha, cargo);
     }
 }
