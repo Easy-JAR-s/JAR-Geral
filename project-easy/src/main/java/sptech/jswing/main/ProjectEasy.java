@@ -44,6 +44,11 @@ public class ProjectEasy extends javax.swing.JFrame {
                 button_loginActionPerformed(evt);
             }
         });
+        button_login.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                button_loginPropertyChange(evt);
+            }
+        });
 
         input_user.setToolTipText("");
         input_user.setName(""); // NOI18N
@@ -83,7 +88,7 @@ public class ProjectEasy extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel4)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -92,25 +97,25 @@ public class ProjectEasy extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(18, 60, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LabelResultado)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(input_password)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(input_user)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(button_login, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel3))))
                 .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addGap(119, 119, 119)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(input_user, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,16 +140,12 @@ public class ProjectEasy extends javax.swing.JFrame {
         
         String user = String.valueOf(input_user.getText());
         String password = String.valueOf(input_password.getText());
-
-        String resultado = "";
-                
-        if (user.isEmpty() || password.isEmpty()){
-            resultado += "Acesso negado!";
-            jLabel3.setText(resultado.toString());
-        } else{
-            List<User> usuarios = con.query("SELECT * FROM usuario WHERE email = ? AND senha = ?", new UserRowMapper(), user, password);
-            System.out.println(usuarios);
-            JdbcTemplate con = conexao.getConnection();
+        
+        List<User> usuarios = con.query("SELECT * FROM usuario WHERE email = ? AND senha = ?", new UserRowMapper(), user, password);
+        System.out.println(usuarios);
+        
+        if (usuarios.size() <= 0){
+            System.out.println("Acesso negado - Dados incorretos");
         }
     }//GEN-LAST:event_button_loginActionPerformed
 
@@ -155,6 +156,10 @@ public class ProjectEasy extends javax.swing.JFrame {
     private void input_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_input_passwordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_input_passwordActionPerformed
+
+    private void button_loginPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_button_loginPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_loginPropertyChange
 
     /**
      * @param args the command line arguments
