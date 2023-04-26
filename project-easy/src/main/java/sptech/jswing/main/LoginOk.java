@@ -30,9 +30,12 @@ public class LoginOk extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setForeground(new java.awt.Color(0, 51, 0));
         jLabel1.setText("Login feito com sucesso.");
 
+        jLabel2.setForeground(new java.awt.Color(0, 51, 0));
         jLabel2.setText("Sua máquina está sendo monitorada.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

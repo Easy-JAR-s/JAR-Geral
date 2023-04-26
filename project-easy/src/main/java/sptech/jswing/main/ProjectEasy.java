@@ -1,6 +1,7 @@
 package sptech.jswing.main;
 
 import com.github.britooo.looca.api.core.Looca;
+import java.awt.Color;
 import java.util.List;
 import sptech.jswing.models.Conexao;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -148,6 +149,7 @@ public class ProjectEasy extends javax.swing.JFrame {
         if (usuarios.size() <= 0){
             System.out.println("Acesso negado - Dados incorretos");
             jLabel3.setText("Acesso negado");
+            jLabel3.setForeground(Color.red);
         } else {
             new LoginOk().setVisible(true);
         }
